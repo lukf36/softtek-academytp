@@ -109,6 +109,25 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
+    @PostMapping("/datedealtaunadminpapaa")
+    @Transactional
+    public boolean registerFirstAdmin() {
+        Empleado empleado = new Empleado();
+        empleado.setUsername("admin");
+        empleado.setPassword(encoder.encode("admin123456"));
+        empleado.setNombre("Luke");
+        empleado.setApellido("Ff");
+        empleado.setIsEmpleado(true);
+        empleado.setIsAdmin(true);
+        empleadoRepository.save(empleado);
+        Optional<Empleado> e = this.empleadoRepository.findByUsername("admin");
+        if (e.isPresent()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @PostMapping("/signupemp")
     @PreAuthorize("hasRole('ADMIN')")
     @Transactional
