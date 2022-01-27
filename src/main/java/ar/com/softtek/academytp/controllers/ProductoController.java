@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://retail-lf-softtek.herokuapp.com/", maxAge = 3600)
 @RestController
 @RequestMapping("/api/producto")
 public class ProductoController {
