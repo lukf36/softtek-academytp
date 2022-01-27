@@ -2,6 +2,7 @@ package ar.com.softtek.academytp.controllers;
 
 import ar.com.softtek.academytp.dto.LoginRequest;
 import ar.com.softtek.academytp.models.Cliente;
+import ar.com.softtek.academytp.models.Orden;
 import ar.com.softtek.academytp.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -32,6 +33,12 @@ public class ClienteController {
         return this.clienteService.getClienteById(id);
     }
 
+    @GetMapping("/{id}/ordenes")
+    @PreAuthorize("hasRole('CLIENTE')")
+    public List<Orden> getAllOrdenesFromClienteById(@PathVariable Integer id){
+        return this.clienteService.getAllOrdenesFromClienteById(id);
+    }
+
     @PostMapping()
     @PreAuthorize("hasRole('ADMIN')")
     public Cliente saveCliente(@RequestBody Cliente cliente){
@@ -43,4 +50,5 @@ public class ClienteController {
     public boolean deleteCliente(@PathVariable Integer id){
         return this.clienteService.deleteCliente(id);
     }
+
 }

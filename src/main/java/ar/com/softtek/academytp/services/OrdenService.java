@@ -9,7 +9,9 @@ import ar.com.softtek.academytp.models.Producto;
 import ar.com.softtek.academytp.repositories.OrdenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +50,8 @@ public class OrdenService {
         }
     }
 
+
+    @Transactional
     public Orden generarOrden(NewCompra newCompra) {
         Optional<Cliente> oc = clienteService.getClienteById(newCompra.getClienteId());
         if (!oc.isPresent()){
@@ -55,6 +59,7 @@ public class OrdenService {
         }
         Cliente cliente = oc.get();
         Orden orden = new Orden();
+        orden.setFechaGeneracion(new Date());
         for (DetalleNewCompra c: newCompra.getDetalles()) {
             Integer prodId = c.getIdProdicto();
             Integer cantidad = c.getCantidad();
