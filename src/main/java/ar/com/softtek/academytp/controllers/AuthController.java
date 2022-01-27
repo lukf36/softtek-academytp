@@ -109,7 +109,7 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
-    @PostMapping("/datedealtaunadminpapaa")
+    /*@PostMapping("/datedealtaunadminpapaa")
     @Transactional
     public boolean registerFirstAdmin() {
         Empleado empleado = new Empleado();
@@ -126,7 +126,7 @@ public class AuthController {
         } else {
             return false;
         }
-    }
+    }*/
 
     @PostMapping("/signupemp")
     @PreAuthorize("hasRole('ADMIN')")
