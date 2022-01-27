@@ -11,7 +11,7 @@
 	<groupId>ar.com.softtek</groupId>
 	<artifactId>academytp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<!--<packaging>war</packaging>-->
+	<packaging>war</packaging>
 	<name>academytp</name>
 	<description>SofttekAcademyTp</description>
 	<properties>
